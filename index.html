@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The guide for special layouts and styling</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --font-sans-serif: "Open Sans", sans-serif;
+        --font-serif: Lora, Georgia, serif;
+      }
+
+      html,
+      body {
+        padding: 0;
+        margin: 0;
+
+        font-size: 16px;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+        font-family: var(--font-serif);
+      }
+
+      main {
+        display: grid;
+        gap: 0.75rem;
+      }
+
+      hgroup,
+      section,
+      .inline {
+        display: grid;
+        gap: 0.5rem;
+
+        max-width: 80ch;
+        width: 100%;
+
+        margin: 0 auto;
+        padding: 0.25rem 0.75rem;
+        box-sizing: border-box;
+      }
+
+      hgroup {
+        gap: 0.375rem;
+      }
+
+      h1 {
+        font-size: clamp(2rem, calc(1.375rem + 1.125vw), 3rem);
+      }
+
+      h2 {
+        font-size: clamp(1.75rem, calc(1rem + 1vw), 2.5rem);
+      }
+
+      h3 {
+        font-size: clamp(1.5rem, calc(1rem + 0.5vw), 2rem);
+      }
+
+      p {
+        font-size: 1.125rem;
+      }
+
+      .list-grid {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        font-family: var(--font-sans-serif);
+        font-weight: bold;
+        color: white;
+
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
+        gap: 1rem;
+      }
+
+      .list-grid-item {
+        background-color: var(--color);
+
+        display: grid;
+        place-items: center;
+
+        width: 100%;
+        aspect-ratio: 3 / 2;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <hgroup>
+        <h1 style="text-wrap: balance">
+          The guide for special layouts and styling
+        </h1>
+        <p
+          style="
+            border-left: 5px solid rgb(158, 158, 158);
+            margin-left: 0.25rem;
+            padding-left: 0.75rem;
+            text-wrap: balance;
+          "
+        >
+          Recommendations for how to build reusable and responsive websites and
+          stories for The Michigan Daily.
+        </p>
+        <p style="font-size: 1.125rem">
+          Written by
+          <a href="https://www.michigandaily.com/author/ericlau" rel="author">
+            Eric Lau
+          </a>
+        </p>
+      </hgroup>
+      <section>
+        <p>
+          This guide primarily focuses on setting up page layout and styling.
+          For best practices with regards to development and deployment, refer
+          to the
+          <a
+            href="https://library.michigandaily.com/web/engineering/special-website-checklist"
+            >special website checklist</a
+          >.
+        </p>
+        <p>
+          This guide is also self-referential in that I will be describing
+          concepts that are reflected in how this page is laid out. It will be
+          useful to have the code for this page open as you read.
+        </p>
+      </section>
+      <section>
+        <h2>Layout</h2>
+        <p>
+          Most websites include a CSS reset, a set of stylings that remove style
+          inconsistencies between browsers. This page has a rather minimal reset
+          to remove margin and padding from the body, and to remove margin from
+          headings and paragraphs. While the default margins for text elements
+          are useful to provide spacing, it is preferable to manually control
+          the spacing through grid layout gaps.
+        </p>
+        <p>
+          As a news organization, many of our special websites will require
+          large amounts of prose. People tend to have a hard time reading when a
+          text container is wide. This is particularly an issue for some people
+          with disabilities.
+        </p>
+        <blockquote
+          style="font-family: var(--font-serif); display: grid; gap: 0.5rem"
+        >
+          For people with some reading or vision disabilities, long lines of
+          text can become a significant barrier. They have trouble keeping their
+          place and following the flow of text. Having a narrow block of text
+          makes it easier for them to continue on to the next line in a block.
+          Lines should not exceed 80 characters or glyphs (40 if [Chinese,
+          Japanese and Korean]), where glyphs are the element of writing in the
+          writing system for the text.
+          <footer style="font-family: var(--font-sans-serif)">
+            — W3C,
+            <cite
+              ><a
+                href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-visual-presentation.html"
+                >Understanding Success Criterion 1.4.8 (WCAG 2.0)</a
+              ></cite
+            >
+          </footer>
+        </blockquote>
+        <p>
+          Therefore, I start most prose-heavy layouts with a section that is 60
+          to 80 characters wide. CSS includes a
+          <code><b>ch</b></code> unit to work with the width of a single
+          character glyph. Note that setting a maximum width is naturally
+          responsive, even on mobile devices.
+        </p>
+        <p>
+          In most cases, text should be centered on the screen. Centering can be
+          accomplished with horizontal margin set to <code><b>auto</b></code
+          >. It is also important for a section of text to take up all allotted
+          space within the maximum width constraint by setting the width to
+          <code><b>100%</b></code
+          >.
+        </p>
+        <p>
+          Some padding should also be added around the text container to ensure
+          that the text does not touch the screen edges. This is especially
+          important for mobile devices. Note that padding will add to the width
+          of the container by default, making mobile screens horizontally
+          scrollable. To prevent this, set
+          <code><b>box-sizing: border-box</b></code> on the text container.
+        </p>
+        <p>
+          With all that we've described in terms of grid layout, maximum
+          character width, text centering and mobile responsiveness, we arrive
+          at the following set of styles for prose layout.
+        </p>
+        <pre><code><b>section {
+  display: grid;
+  gap: 0.5rem;
+
+  max-width: 80ch;
+  width: 100%;
+
+  margin: 0 auto;
+  padding: 0.25rem 0.75rem;
+  box-sizing: border-box;
+}</b></code></pre>
+        <p>
+          Although I describe this as "prose layout," all of the ideas are
+          pertinent to any good responsive layout, regardless of the amount of
+          text content.
+        </p>
+      </section>
+
+      <section>
+        <h3>Scroll layout</h3>
+        <p>Use scrollama. View examples</p>
+      </section>
+
+      <section style="max-width: unset; padding: 0">
+        <div class="inline">
+          <h3>Breaking out</h3>
+          <p>
+            Although this default width is useful for prose, there are also
+            situations when you might want more width to work with. In those
+            cases, you will want to create "breakout" sections.
+          </p>
+        </div>
+        <div style="background-color: #d4c184; height: 350px"></div>
+        <div class="inline">
+          <p>
+            In a breakout section, remove the maximum width associated with a
+            section. Then, you will have the full width of the screen to work
+            with.
+          </p>
+        </div>
+        <div
+          class="inline"
+          style="
+            background-color: #79d7e7;
+            max-width: 800px;
+            height: 350px;
+            padding: 0;
+          "
+        ></div>
+        <div class="inline">
+          <p>
+            If there are parts of the breakout section that you want to retain
+            the prose width, you'll want to re-apply the styles that set the
+            maximum character width. Furthermore, the maximum width can be
+            customized to be more than the prose width but less than the full
+            width, as demonstrated in the blue rectangle above.
+          </p>
+        </div>
+        <div class="inline">
+          <h3>Grid layout</h3>
+          <p>Grids are powerful</p>
+          <p>No media queries, automatically responsive</p>
+          <p>We make grid layouts a lot for stories or other websites</p>
+        </div>
+
+        <div
+          class="inline"
+          style="max-width: 1200px; padding-top: 0; padding-bottom: 0"
+        >
+          <ul class="list-grid">
+            <li class="list-grid-item" style="--color: #e4a010">A</li>
+            <li class="list-grid-item" style="--color: #008f39">B</li>
+            <li class="list-grid-item" style="--color: #641c34">C</li>
+            <li class="list-grid-item" style="--color: #e55137">D</li>
+            <li class="list-grid-item" style="--color: #1b5583">E</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>Prose</h2>
+        <p>Font families and sizes</p>
+        <p>16px;</p>
+        <p>rem multiples;</p>
+        <p>responsive width;</p>
+        <p>balanced text, Chrome, progressive enhancement</p>
+      </section>
+
+      <section>
+        <h2>Images</h2>
+        <p>
+          Figures Figcaption source sets Modern image formats Alternative text
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
