@@ -71,7 +71,7 @@
         font-size: 1.125rem;
       }
 
-      .list-grid {
+      .grid-list {
         list-style: none;
         padding: 0;
         margin: 0;
@@ -85,7 +85,7 @@
         gap: 1rem;
       }
 
-      .list-grid-item {
+      .grid-list-item {
         background-color: var(--color);
 
         display: grid;
@@ -220,7 +220,50 @@
 
       <section>
         <h3>Scroll layout</h3>
-        <p>Use scrollama. View examples</p>
+        <p>
+          There is a common storytelling method in journalism called
+          "scrollytelling." In essence, a visual element remains in the
+          background or to the side of an area of text as the user scrolls. The
+          visual element usually changes several times as the reader reaches
+          specific areas of text, denoting some sort of relation between the
+          change and the text. Scrolling layouts are often used in data
+          visualizations or animations to show transition points in a story.
+        </p>
+        <p>
+          The most prominent library used for scrolling layouts is called
+          <code
+            ><b
+              ><a href="https://github.com/russellsamora/scrollama"
+                >scrollama</a
+              ></b
+            ></code
+          >. The library was authored by Russel Samora who currently works at
+          <a href="https://pudding.cool">The Pudding</a>. The library is used
+          widely throughout journalism. We have published several stories and
+          websites that use <code><b>scrollama</b>.</code>
+        </p>
+        <p>
+          The library
+          <a href="https://russellsamora.github.io/scrollama/basic/"
+            >examples</a
+          >
+          are a useful starting point for understanding how to structure your
+          story, though there is a browser compatibility issue in the "Sticky
+          Overlay" for Safari with regard to the three-dimensional overlay.
+          You'll likely need to introduce a new stacking context by setting
+          <code><b>transform: translate3d(0, 0, 0);</b></code> on the scrolling
+          container.
+        </p>
+        <p>
+          If you are working with React, you may want to check out
+          <code
+            ><b
+              ><a href="https://github.com/jsonkao/react-scrollama"
+                >react-scrollama</a
+              ></b
+            ></code
+          >, a wrapper library written by Jason Kao.
+        </p>
       </section>
 
       <section style="max-width: unset; padding: 0">
@@ -260,21 +303,25 @@
         </div>
         <div class="inline">
           <h3>Grid layout</h3>
-          <p>Grids are powerful</p>
-          <p>No media queries, automatically responsive</p>
-          <p>We make grid layouts a lot for stories or other websites</p>
+          <p>
+            Grids are a powerful layout approach. They can be used for simple
+            vertical layouts like this overall page, but can also be used for
+            more complex two-dimensional layouts. Grids can be made to be
+            responsive by default in some cases, eliminating the need for media
+            queries.
+          </p>
         </div>
 
         <div
           class="inline"
           style="max-width: 1200px; padding-top: 0; padding-bottom: 0"
         >
-          <ul class="list-grid">
-            <li class="list-grid-item" style="--color: #e4a010">A</li>
-            <li class="list-grid-item" style="--color: #008f39">B</li>
-            <li class="list-grid-item" style="--color: #641c34">C</li>
-            <li class="list-grid-item" style="--color: #e55137">D</li>
-            <li class="list-grid-item" style="--color: #1b5583">E</li>
+          <ul class="grid-list">
+            <li class="grid-list-item" style="--color: #e4a010">A</li>
+            <li class="grid-list-item" style="--color: #008f39">B</li>
+            <li class="grid-list-item" style="--color: #641c34">C</li>
+            <li class="grid-list-item" style="--color: #e55137">D</li>
+            <li class="grid-list-item" style="--color: #1b5583">E</li>
           </ul>
         </div>
       </section>
