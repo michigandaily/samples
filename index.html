@@ -197,6 +197,75 @@
         </p>
       </section>
 
+      <section style="max-width: unset; padding: 0">
+        <div class="inline">
+          <h3>Breaking out</h3>
+          <p>
+            Although this default width is useful for prose, there are also
+            situations when you might want more width to work with. In those
+            cases, you will want to create "breakout" sections.
+          </p>
+        </div>
+        <div style="background-color: #d4c184; height: 350px"></div>
+        <div class="inline">
+          <p>
+            In a breakout section, remove the maximum width associated with a
+            section. Then, you will have the full width of the screen to work
+            with.
+          </p>
+        </div>
+        <div
+          class="inline"
+          style="
+            background-color: #79d7e7;
+            max-width: 800px;
+            height: 350px;
+            padding: 0;
+          "
+        ></div>
+        <div class="inline">
+          <p>
+            If there are parts of the breakout section that you want to retain
+            the prose width, you'll want to re-apply the styles that set the
+            maximum character width. Furthermore, the maximum width can be
+            customized to be more than the prose width but less than the full
+            width, as demonstrated in the blue rectangle above.
+          </p>
+          <p>
+            Note that breakout sections are less visually imposing on mobile
+            devices due to the small screen width.
+          </p>
+        </div>
+        <div class="inline">
+          <h3>Grid layout</h3>
+          <p>
+            Grids are a powerful layout approach. They can be used for simple
+            vertical layouts like this overall page, but can also be used for
+            more complex two-dimensional layouts. Grids can be made to be
+            responsive by default in some cases, eliminating the need for media
+            queries. Relevant styles for the following example can be found in
+            <code><b>css/grid.css</b></code
+            >.
+          </p>
+          <p>
+            Notice that the following grid layout is part of a breakout section.
+          </p>
+        </div>
+
+        <div
+          class="inline"
+          style="max-width: 1200px; padding-top: 0; padding-bottom: 0"
+        >
+          <ul class="grid-list">
+            <li class="grid-list-item" style="--color: #e4a010">A</li>
+            <li class="grid-list-item" style="--color: #008f39">B</li>
+            <li class="grid-list-item" style="--color: #641c34">C</li>
+            <li class="grid-list-item" style="--color: #e55137">D</li>
+            <li class="grid-list-item" style="--color: #1b5583">E</li>
+          </ul>
+        </div>
+      </section>
+
       <section>
         <h3>Scroll layout</h3>
         <p>
@@ -388,7 +457,9 @@
               <p>
                 This page does not use <code><b>scrollama</b></code> to change
                 the scrolling figure. It simply shows the styling and layout
-                necessary to effectively use the library.
+                necessary to effectively use the library. The relevant styles
+                can be found in <code><b>css/scroll.css</b></code
+                >.
               </p>
             </div>
           </div>
@@ -401,72 +472,6 @@
               </p>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section style="max-width: unset; padding: 0">
-        <div class="inline">
-          <h3>Breaking out</h3>
-          <p>
-            Although this default width is useful for prose, there are also
-            situations when you might want more width to work with. In those
-            cases, you will want to create "breakout" sections.
-          </p>
-        </div>
-        <div style="background-color: #d4c184; height: 350px"></div>
-        <div class="inline">
-          <p>
-            In a breakout section, remove the maximum width associated with a
-            section. Then, you will have the full width of the screen to work
-            with.
-          </p>
-        </div>
-        <div
-          class="inline"
-          style="
-            background-color: #79d7e7;
-            max-width: 800px;
-            height: 350px;
-            padding: 0;
-          "
-        ></div>
-        <div class="inline">
-          <p>
-            If there are parts of the breakout section that you want to retain
-            the prose width, you'll want to re-apply the styles that set the
-            maximum character width. Furthermore, the maximum width can be
-            customized to be more than the prose width but less than the full
-            width, as demonstrated in the blue rectangle above.
-          </p>
-          <p>
-            Note that breakout sections are less visually imposing on mobile
-            devices due to the small screen width.
-          </p>
-        </div>
-        <div class="inline">
-          <h3>Grid layout</h3>
-          <p>
-            Grids are a powerful layout approach. They can be used for simple
-            vertical layouts like this overall page, but can also be used for
-            more complex two-dimensional layouts. Grids can be made to be
-            responsive by default in some cases, eliminating the need for media
-            queries. Relevant styles for the following example can be found in
-            <code><b>css/grid.css</b></code
-            >.
-          </p>
-        </div>
-
-        <div
-          class="inline"
-          style="max-width: 1200px; padding-top: 0; padding-bottom: 0"
-        >
-          <ul class="grid-list">
-            <li class="grid-list-item" style="--color: #e4a010">A</li>
-            <li class="grid-list-item" style="--color: #008f39">B</li>
-            <li class="grid-list-item" style="--color: #641c34">C</li>
-            <li class="grid-list-item" style="--color: #e55137">D</li>
-            <li class="grid-list-item" style="--color: #1b5583">E</li>
-          </ul>
         </div>
       </section>
 
