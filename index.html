@@ -70,31 +70,10 @@
       p {
         font-size: 1.125rem;
       }
-
-      .grid-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-
-        font-family: var(--font-sans-serif);
-        font-weight: bold;
-        color: white;
-
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
-        gap: 1rem;
-      }
-
-      .grid-list-item {
-        background-color: var(--color);
-
-        display: grid;
-        place-items: center;
-
-        width: 100%;
-        aspect-ratio: 3 / 2;
-      }
     </style>
+
+    <link href="css/grid.css" rel="stylesheet" />
+    <link href="css/scroll.css" rel="stylesheet" />
   </head>
   <body>
     <main>
@@ -229,41 +208,200 @@
           change and the text. Scrolling layouts are often used in data
           visualizations or animations to show transition points in a story.
         </p>
-        <p>
-          The most prominent library used for scrolling layouts is called
-          <code
-            ><b
-              ><a href="https://github.com/russellsamora/scrollama"
-                >scrollama</a
-              ></b
-            ></code
-          >. The library was authored by Russel Samora who currently works at
-          <a href="https://pudding.cool">The Pudding</a>. The library is used
-          widely throughout journalism. We have published several stories and
-          websites that use <code><b>scrollama</b>.</code>
-        </p>
-        <p>
-          The library
-          <a href="https://russellsamora.github.io/scrollama/basic/"
-            >examples</a
-          >
-          are a useful starting point for understanding how to structure your
-          story, though there is a browser compatibility issue in the "Sticky
-          Overlay" for Safari with regard to the three-dimensional overlay.
-          You'll likely need to introduce a new stacking context by setting
-          <code><b>transform: translate3d(0, 0, 0);</b></code> on the scrolling
-          container.
-        </p>
-        <p>
-          If you are working with React, you may want to check out
-          <code
-            ><b
-              ><a href="https://github.com/jsonkao/react-scrollama"
-                >react-scrollama</a
-              ></b
-            ></code
-          >, a wrapper library written by Jason Kao.
-        </p>
+      </section>
+
+      <section class="scroll-container">
+        <figure class="scroll-figure scroll-stack">
+          <div
+            style="background-color: #ab14b7; width: 100%; height: 300px"
+          ></div>
+        </figure>
+        <div class="scroll-step-container scroll-stack">
+          <div class="scroll-step">
+            <div class="scroll-step-content">
+              <p>
+                There are a few important areas for a scrolling layout. First,
+                there is a container with <code><b>position: relative</b></code
+                >. This container will have two immediate children: 1) a figure
+                that will remain in the background and 2) a container of steps.
+              </p>
+            </div>
+          </div>
+          <div class="scroll-step">
+            <div class="scroll-step-content">
+              <p>
+                The figure should stick to the top of the screen, relative to
+                the scrolling container. In this case, it is also taking up the
+                entire height of the screen.
+              </p>
+            </div>
+          </div>
+          <div class="scroll-step">
+            <div class="scroll-step-content">
+              <p>
+                The figure should also be placed behind the steps (in
+                three-dimensional space) such that the written content appears
+                in front of the figure. The figure should usually horizontally
+                and vertically center any of the content inside it.
+              </p>
+            </div>
+          </div>
+          <div class="scroll-step">
+            <div class="scroll-step-content">
+              <pre><code><b>.scroll-figure {
+  position: sticky;
+  top: 0;
+  margin: 0;
+
+  min-height: 100vh;
+  min-height: 100svh;
+
+  display: grid;
+  place-items: center;
+  z-index: 0;
+}</b></code></pre>
+            </div>
+          </div>
+          <div class="scroll-step">
+            <div class="scroll-step-content">
+              <p>
+                The figure should also have something inside it. In our case, we
+                created a purple rectangle that is 500 pixels tall.
+              </p>
+            </div>
+          </div>
+          <div class="scroll-step">
+            <div class="scroll-step-content">
+              <p>
+                Secondly, the child container should be made to render in front
+                of the figure. In our case, the width is also less than the
+                figure's width.
+              </p>
+            </div>
+          </div>
+          <div class="scroll-step">
+            <div class="scroll-step-content">
+              <pre><code><b>.scroll-step-container {
+  z-index: 1;
+
+  max-width: 60ch;
+  width: 100%;
+
+  margin: 0 auto;
+}</b></code></pre>
+            </div>
+          </div>
+          <div class="scroll-step">
+            <div class="scroll-step-content">
+              <p>
+                A step itself should take up the entire screen height. Within
+                the step, there is another content container that has a white
+                background. This provides the visual illusion that steps are
+                smaller than they are. Note that the content container does not
+                take up the entire height of the screen.
+              </p>
+            </div>
+          </div>
+          <div class="scroll-step">
+            <div class="scroll-step-content">
+              <pre><code><b>.scroll-step {
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+.scroll-step-content {
+  border: 2px solid black;
+  background: 
+    rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 1rem;
+
+  display: grid;
+  gap: 1rem;
+}</b></code></pre>
+            </div>
+          </div>
+          <div class="scroll-step">
+            <div class="scroll-step-content">
+              <p>
+                While all of the steps on the page take up the full height of
+                the screen, it may be useful depending on the story for specific
+                steps to take up more or less of the screen to shorten or
+                lengthen the amount of time it takes to scroll between steps.
+              </p>
+            </div>
+          </div>
+          <div class="scroll-step">
+            <div class="scroll-step-content">
+              <p>
+                For the most part, the (text) content within each step should be
+                short. This is especially important on mobile devices so as to
+                not completely cover the background figure.
+              </p>
+            </div>
+          </div>
+          <div class="scroll-step">
+            <div class="scroll-step-content">
+              <p>
+                There is a browser compatibility issue regarding the
+                three-dimensional nature of our layout. The figure is meant to
+                always be behind the steps, but this is not the case in Safari
+                without some extra configuration for the figure and the
+                container of steps.
+              </p>
+            </div>
+          </div>
+          <div class="scroll-step">
+            <div class="scroll-step-content">
+              <pre><code><b>.scroll-stack {
+  transform: 
+    translate3d(0, 0, 0);
+}</b></code></pre>
+              <p>
+                This forcefully creates a
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_positioned_layout/Understanding_z-index/Stacking_context"
+                  >stacking context</a
+                >. I'm not certain this is necessary, but I've found it so in my
+                experience.
+              </p>
+            </div>
+          </div>
+          <div class="scroll-step">
+            <div class="scroll-step-content">
+              <p>
+                The most prominent library used for scrolling layouts in
+                journalism is called
+                <code
+                  ><b
+                    ><a href="https://github.com/russellsamora/scrollama"
+                      >scrollama</a
+                    ></b
+                  ></code
+                >. We have published several stories and websites that use the
+                library.
+              </p>
+            </div>
+          </div>
+          <div class="scroll-step">
+            <div class="scroll-step-content">
+              <p>
+                This page does not use <code><b>scrollama</b></code> to change
+                the scrolling figure. It simply shows the styling and layout
+                necessary to effectively use the library.
+              </p>
+            </div>
+          </div>
+          <div class="scroll-step">
+            <div class="scroll-step-content">
+              <p>
+                I will leave it as an exercise to read the library's
+                documentation to figure out how to change the figure while
+                scrolling.
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section style="max-width: unset; padding: 0">
@@ -300,6 +438,10 @@
             customized to be more than the prose width but less than the full
             width, as demonstrated in the blue rectangle above.
           </p>
+          <p>
+            Note that breakout sections are less visually imposing on mobile
+            devices due to the small screen width.
+          </p>
         </div>
         <div class="inline">
           <h3>Grid layout</h3>
@@ -308,7 +450,9 @@
             vertical layouts like this overall page, but can also be used for
             more complex two-dimensional layouts. Grids can be made to be
             responsive by default in some cases, eliminating the need for media
-            queries.
+            queries. Relevant styles for the following example can be found in
+            <code><b>css/grid.css</b></code
+            >.
           </p>
         </div>
 

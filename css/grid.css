@@ -1,0 +1,23 @@
+.grid-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  font-family: var(--font-sans-serif);
+  font-weight: bold;
+  color: white;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
+  gap: 1rem;
+}
+
+.grid-list-item {
+  background-color: var(--color);
+
+  display: grid;
+  place-items: center;
+
+  width: 100%;
+  aspect-ratio: 3 / 2;
+}

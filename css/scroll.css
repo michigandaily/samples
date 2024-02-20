@@ -1,0 +1,51 @@
+.scroll-container {
+  position: relative;
+}
+
+.scroll-figure {
+  position: sticky;
+  top: 0;
+  margin: 0;
+
+  min-height: 100vh;
+  min-height: 100svh;
+
+  display: grid;
+  place-items: center;
+  z-index: 0;
+}
+
+.scroll-step-container {
+  z-index: 1;
+
+  width: min(60ch, 100%);
+
+  margin: 0 auto;
+}
+
+.scroll-step {
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+.scroll-step-content pre {
+  margin: 0;
+}
+
+.scroll-step-content a {
+  color: white;
+}
+
+.scroll-step-content {
+  border: 2px solid black;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 1rem;
+
+  display: grid;
+  gap: 1rem;
+}
+
+.scroll-stack {
+  transform: translate3d(0, 0, 0);
+}
