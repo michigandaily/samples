@@ -477,11 +477,34 @@
 
       <section>
         <h2>Prose</h2>
-        <p>Font families and sizes</p>
-        <p>16px;</p>
-        <p>rem multiples;</p>
-        <p>responsive width;</p>
-        <p>balanced text, Chrome, progressive enhancement</p>
+        <p>
+          The Daily uses Lora as our serif font and Open Sans as our sans serif
+          font (digitally). In typography, serifs are small lines that are
+          attached to the ends of a letter. We use these fonts in our styles by
+          importing them through
+          <a href="https://fonts.google.com">Google Fonts</a>.
+        </p>
+        <p>
+          All text should have be at least 16 pixels large for readability.
+          Typically, I don't use pixels explicitly. Instead, I specify 16 pixels
+          as the base font size, and then use the <code><b>rem</b></code> unit
+          to specify multiples of 16. For example, <code><b>1rem</b></code> is
+          equivalent to 16 pixels, and <code><b>2rem</b></code> is equivalent to
+          32 pixels. I will typically increment <code><b>rem</b></code> units by
+          0.125 or 0.25 to keep some form of consistency. The lowest font size
+          that I feel somewhat comfortable using is <code><b>0.875rem</b></code
+          >, potentially for captions or footnotes.
+        </p>
+        <p>
+          For larger pieces of text such as headings or titles, I will introduce
+          a responsive unit such as <code><b>vw</b></code> which represents a
+          fraction of the width of the screen. For example, the font size of
+          this page title is
+          <code><b>clamp(2rem, calc(1.375rem + 1.125vw), 3rem);</b></code
+          >. The <code><b>clamp</b></code> function keeps the font size within
+          the range of the first and last parameters, but allows the size to be
+          flexible otherwise.
+        </p>
       </section>
 
       <section>
