@@ -27,7 +27,8 @@
       h1,
       h2,
       h3,
-      p {
+      p,
+      ul {
         margin: 0;
         font-family: var(--font-serif);
       }
@@ -510,8 +511,48 @@
       <section>
         <h2>Images</h2>
         <p>
-          Figures Figcaption source sets Modern image formats Alternative text
+          Every story that gets published usually includes at least one image
+          (i.e., the featured image). An image should almost always have the
+          following additional elements: 1) alternative text, 2) credits and 3)
+          a caption. The image and the additional elements should usually be
+          encapsulated in a <code><b>figure</b></code> element. The caption
+          itself should be placed in a <code><b>figcaption</b></code> element.
         </p>
+        <p>
+          Images are heavy pieces of media. While prose is relatively light,
+          images can often take up several megabytes (MBs) without optimization.
+        </p>
+        <ul>
+          <li>
+            While JPG and PNG are well known image file formats, they are not as
+            space efficient as modern ones such as WebP.
+          </li>
+          <li>
+            While it is good to have images with high resolution, small screens
+            such as phones are unable to take advantage of the large pixel
+            count. Therefore, different image sizes should be used for different
+            screen sizes.
+          </li>
+          <li>
+            A user might not view all of the images in a story if they do not
+            finish reading. Therefore, it will be beneficial to load an image
+            when the user scrolls near it. This can be accomplished with
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading"
+              >lazy loading</a
+            >.
+          </li>
+        </ul>
+        <p>
+          Our WordPress website includes the
+          <a href="https://jetpack.com">Jetpack</a> plugin which optimizes
+          images by using better image formats and creating several size
+          variants for different screen sizes. In order to take advantage of
+          Jetpack, visit the
+          <a href="https://michigan-daily-pantry.pages.dev">pantry</a>.
+        </p>
+        <h3>Carousels</h3>
+        <h3>Stacks</h3>
       </section>
     </main>
   </body>
